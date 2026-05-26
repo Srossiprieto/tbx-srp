@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Header from './components/Header'
 import FileFilter from './components/FileFilter'
 import FilesTable from './components/FilesTable'
+import ErrorBoundary from './components/ErrorBoundary'
 import { loadFilesData, loadFilesList, setSelectedFile } from './store/filesSlice'
 
 export default function App () {
@@ -29,7 +30,9 @@ export default function App () {
         />
         {status === 'loading' && <p>Cargando…</p>}
         {error && <p className='text-danger'>{error}</p>}
-        <FilesTable data={data} />
+        <ErrorBoundary>
+          <FilesTable data={data} />
+        </ErrorBoundary>
       </Container>
     </>
   )
