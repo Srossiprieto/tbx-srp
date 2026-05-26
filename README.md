@@ -9,6 +9,7 @@ y un frontend (React + React Bootstrap) que muestra la información en una tabla
 |-----|-------------|
 | [docs/guide.md](docs/guide.md) | Cómo levantar el proyecto, correr tests y usar los endpoints |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitectura del sistema, diagramas de capas y decisiones de diseño |
+| [docs/IMPROVEMENTS.md](docs/IMPROVEMENTS.md) | Mejoras identificadas y estrategia de escalabilidad |
 
 ## Estructura
 
