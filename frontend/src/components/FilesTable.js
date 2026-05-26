@@ -1,9 +1,18 @@
 import Table from 'react-bootstrap/Table'
+import Alert from 'react-bootstrap/Alert'
 
 export default function FilesTable ({ data }) {
   const rows = data.flatMap((file) =>
     file.lines.map((line, index) => ({ key: `${file.file}-${index}`, fileName: file.file, ...line }))
   )
+
+  if (rows.length === 0) {
+    return (
+      <Alert variant='warning' className='mt-2'>
+        No hay líneas válidas para mostrar. El archivo puede estar vacío o contener datos con formato incorrecto.
+      </Alert>
+    )
+  }
 
   return (
     <Table striped hover responsive>

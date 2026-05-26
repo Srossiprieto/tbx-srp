@@ -1,0 +1,10 @@
+.app-header {
+  background: #f15d5d;
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 500;
+}
+
+.file-filter {
+  max-width: 320px;
+}
