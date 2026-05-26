@@ -152,9 +152,10 @@ npm test
 
 **Qué se testea:**
 
-| Archivo de test                          | Qué cubre                                   |
-|-----------------------------------------|---------------------------------------------|
-| `components/__tests__/FilesTable.test.js` | Renderizado de filas, headers, datos reales |
+| Archivo de test                               | Qué cubre                                          |
+|----------------------------------------------|----------------------------------------------------|
+| `components/__tests__/FilesTable.test.js`     | Renderizado de filas, headers, datos reales        |
+| `components/__tests__/ErrorBoundary.test.js`  | Render normal, captura de error y fallback UI      |
 
 Salida esperada:
 ```
@@ -162,7 +163,11 @@ Salida esperada:
     ✓ renderiza una fila por cada línea de cada archivo
     ✓ muestra los encabezados del wireframe
 
-  2 passing
+  ErrorBoundary
+    ✓ renderiza los hijos si no hay error
+    ✓ muestra el mensaje de error si un hijo tira
+
+  4 passing
 ```
 
 Para modo watch (re-corre al guardar):

@@ -60,13 +60,15 @@ tbx-srp/
 │       │   └── filesSlice.js   # Slice: estado + reducers + thunks
 │       └── components/
 │           ├── Header.js
-│           ├── FileFilter.js   # Select para filtrar por archivo
-│           └── FilesTable.js   # Tabla de resultados
+│           ├── FileFilter.js    # Select para filtrar por archivo
+│           ├── FilesTable.js    # Tabla de resultados
+│           └── ErrorBoundary.js # Captura errores de render y muestra fallback UI
 │
 ├── docker-compose.yml
 ├── README.md
-├── DEV_GUIDE.md
-└── ARCHITECTURE.md
+└── docs/
+    ├── guide.md
+    └── ARCHITECTURE.md
 ```
 
 ---
@@ -148,10 +150,12 @@ graph TD
     STORE -->|state| APP
     APP --> HEADER[Header]
     APP --> FILTER[FileFilter]
-    APP --> TABLE[FilesTable]
+    APP --> EB[ErrorBoundary]
+    EB --> TABLE[FilesTable]
     STORE -->|thunk| API[filesApi.js]
     API -->|fetch| BACKEND[API REST :3000]
     FILTER -->|onChange → dispatch setSelectedFile| STORE
+    EB -->|error en render| FALLBACK[Alert de error]
 ```
 
 ### Flujo de datos
@@ -251,3 +255,4 @@ push/PR
 | Redux Toolkit | useState + Context | Estado asincrónico con múltiples fuentes (lista + datos) se maneja limpio con `createAsyncThunk` |
 | `Promise.allSettled` | `Promise.all` | `Promise.all` falla todo si uno falla; `allSettled` permite respuesta parcial |
 | Webpack manual | Vite / CRA | El constraint de Node 16 es compatible con ambos, pero Webpack da más control explícito |
+| `ErrorBoundary` como class component | try/catch en render | React solo soporta error boundaries via `getDerivedStateFromError` en class components; no hay equivalente funcional nativo |
