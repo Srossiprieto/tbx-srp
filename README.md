@@ -3,12 +3,20 @@
 API REST (Node + Express) que consume el API externo, descarga y reformatea los CSV,
 y un frontend (React + React Bootstrap) que muestra la información en una tabla.
 
+## Documentación
+
+| Doc | Descripción |
+|-----|-------------|
+| [docs/guide.md](docs/guide.md) | Cómo levantar el proyecto, correr tests y usar los endpoints |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Arquitectura del sistema, diagramas de capas y decisiones de diseño |
+
 ## Estructura
 
 ```
 .
 ├── api/        # Node + Express (capas: routes → controller → service → gateway + parser)
 ├── frontend/   # React + React Bootstrap + Redux Toolkit
+├── docs/       # Guías de desarrollo y arquitectura
 └── docker-compose.yml
 ```
 
