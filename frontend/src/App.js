@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/Container'
 import Header from './components/Header'
 import FileFilter from './components/FileFilter'
 import FilesTable from './components/FilesTable'
+import ErrorBoundary from './components/ErrorBoundary'
+import TableSkeleton from './components/TableSkeleton'
 import { loadFilesData, loadFilesList, setSelectedFile } from './store/filesSlice'
 
 export default function App () {
@@ -27,9 +29,15 @@ export default function App () {
           value={selectedFile}
           onChange={(value) => dispatch(setSelectedFile(value))}
         />
-        {status === 'loading' && <p>Cargando…</p>}
         {error && <p className='text-danger'>{error}</p>}
-        <FilesTable data={data} />
+        {status === 'loading'
+          ? <TableSkeleton />
+          : (
+            <ErrorBoundary>
+              <FilesTable data={data} />
+            </ErrorBoundary>
+            )}
+
       </Container>
     </>
   )
