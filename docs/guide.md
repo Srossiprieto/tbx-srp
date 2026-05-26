@@ -152,28 +152,25 @@ npm test
 
 **Qué se testea:**
 
-| Archivo de test                               | Qué cubre                                          |
-|----------------------------------------------|----------------------------------------------------|
-| `components/__tests__/FilesTable.test.js`     | Renderizado de filas, headers, datos reales        |
-| `components/__tests__/ErrorBoundary.test.js`  | Render normal, captura de error y fallback UI      |
-| `components/__tests__/TableSkeleton.test.js`  | Headers, label de accesibilidad y 8 filas placeholder |
+| Archivo de test                               | Qué cubre                                                      |
+|----------------------------------------------|----------------------------------------------------------------|
+| `components/__tests__/FilesTable.test.js`     | Renderizado de filas, headers, datos reales                    |
+| `components/__tests__/ErrorBoundary.test.js`  | Render normal, captura de error y fallback UI                  |
+| `components/__tests__/TableSkeleton.test.js`  | Headers, label de accesibilidad y 8 filas placeholder          |
+| `components/__tests__/FileFilter.test.js`     | Opciones del select, valor controlado y callback onChange      |
+| `store/__tests__/filesSlice.test.js`          | Reducers, estados pending/fulfilled/rejected de los thunks     |
+| `__tests__/App.test.js`                       | Integración: skeleton, tabla, filtro, error de red             |
 
 Salida esperada:
 ```
-  FilesTable
-    ✓ renderiza una fila por cada línea de cada archivo
-    ✓ muestra los encabezados del wireframe
+  FilesTable       2 tests
+  ErrorBoundary    2 tests
+  TableSkeleton    3 tests
+  FileFilter       4 tests
+  filesSlice       6 tests
+  App              5 tests
 
-  ErrorBoundary
-    ✓ renderiza los hijos si no hay error
-    ✓ muestra el mensaje de error si un hijo tira
-
-  TableSkeleton
-    ✓ renderiza los encabezados de la tabla
-    ✓ renderiza el label de accesibilidad mientras carga
-    ✓ renderiza 8 filas placeholder
-
-  7 passing
+  22 passing
 ```
 
 Para modo watch (re-corre al guardar):
