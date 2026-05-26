@@ -62,6 +62,7 @@ tbx-srp/
 │           ├── Header.js
 │           ├── FileFilter.js    # Select para filtrar por archivo
 │           ├── FilesTable.js    # Tabla de resultados
+│           ├── TableSkeleton.js # Placeholder animado mientras cargan los datos
 │           └── ErrorBoundary.js # Captura errores de render y muestra fallback UI
 │
 ├── docker-compose.yml
@@ -150,12 +151,14 @@ graph TD
     STORE -->|state| APP
     APP --> HEADER[Header]
     APP --> FILTER[FileFilter]
+    APP --> SKEL[TableSkeleton]
     APP --> EB[ErrorBoundary]
     EB --> TABLE[FilesTable]
     STORE -->|thunk| API[filesApi.js]
     API -->|fetch| BACKEND[API REST :3000]
     FILTER -->|onChange → dispatch setSelectedFile| STORE
     EB -->|error en render| FALLBACK[Alert de error]
+    APP -->|status === loading| SKEL
 ```
 
 ### Flujo de datos
